@@ -1,15 +1,26 @@
 import { Button, Card } from "antd";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ItemList = ({ item }) => {
   const dispatch = useDispatch();
   //update cart
-  const handleAddToCart = () => {
-    dispatch({
-      type: "ADD_TO_CART",
-      payload: { ...item, quantity: 1 },
+  const { cartItems } = useSelector((state) => state.rootReducer);
+  const handleAddToCart = (id) => {
+    let flag = false;
+    // eslint-disable-next-line array-callback-return
+    cartItems.map((item) => {
+      if (item._id === id) {
+        flag = true;
+        item.quantity = item.quantity + 1;
+      }
     });
+    if (flag !== true) {
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: { ...item, quantity: 1 },
+      });
+    }
   };
 
   const { Meta } = Card;
@@ -25,7 +36,7 @@ const ItemList = ({ item }) => {
           <Meta title={`$${item.price}`} />
         </div>
         <div className="item-button">
-          <Button onClick={() => handleAddToCart()}>Add to cart</Button>
+          <Button onClick={() => handleAddToCart(item._id)}>Add to cart</Button>
         </div>
       </Card>
     </div>

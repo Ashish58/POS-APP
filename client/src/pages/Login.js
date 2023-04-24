@@ -13,11 +13,15 @@ const Login = () => {
         type: "SHOW_LOADING",
       });
       const res = await axios.post("/api/users/login", value);
-      message.success("User Login Sucessfully");
-      localStorage.setItem("auth", JSON.stringify(res.data));
-      navigate("/");
-
       dispatch({ type: "HIDE_LOADING" });
+
+      if (res.data.user !== null) {
+        localStorage.setItem("auth", JSON.stringify(res.data));
+        message.success("User Login Sucessfully");
+        navigate("/");
+      } else {
+        message.error("Email or Password Invalid!");
+      }
     } catch (error) {
       dispatch({ type: "HIDE_LOADING" });
       message.error("Something Went Wrong");

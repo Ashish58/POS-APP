@@ -145,8 +145,7 @@ const CartPage = () => {
               Sub Total:$<b>{subTotal}</b>
             </h6>
             <h6>
-              TAX
-              $<b>{((subTotal / 100) * 10).toFixed(2)}</b>
+              TAX $<b>{((subTotal / 100) * 10).toFixed(2)}</b>
             </h6>
             <h5>
               GRAND TOTAL=
