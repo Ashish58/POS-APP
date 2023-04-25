@@ -29,14 +29,22 @@ const ItemList = ({ item }) => {
       <Card
         hoverable
         style={{ width: 230, marginBottom: 20 }}
-        cover={<img alt={item.name} src={item.image} style={{ height: 180 }} />}
+        cover={
+          <img
+            alt={item.name}
+            src={item.image}
+            style={{ width: 200, height: 180 }}
+          />
+        }
       >
         <div className="card_info">
           <Meta className="item_name" title={item.name} />
           <Meta title={`$${item.price}`} />
         </div>
         <div className="item-button">
-          <Button onClick={() => handleAddToCart(item._id)}>Add to cart</Button>
+          <Button type="primary" onClick={() => handleAddToCart(item._id)}>
+            Add to cart
+          </Button>
         </div>
       </Card>
     </div>
