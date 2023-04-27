@@ -33,11 +33,12 @@ const ItemList = ({ item }) => {
           <img
             alt={item.name}
             src={item.image}
-            style={{ width: 200, height: 180 }}
+            style={{ width: 220, height: 150, objectFit: "scale-down" }}
           />
         }
       >
         <div className="card_info">
+        
           <Meta className="item_name" title={item.name} />
           <Meta title={`$${item.price}`} />
         </div>
