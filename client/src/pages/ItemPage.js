@@ -56,7 +56,13 @@ const ItemPage = () => {
       title: "Image",
       dataIndex: "image",
       render: (image, record) => (
-        <img src={image} alt={record.name} height="60" width="60" />
+        <img
+          src={image}
+          alt={record.name}
+          height="60"
+          width="60"
+          style={{ objectFit: "scale-down" }}
+        />
       ),
     },
     { title: "Price", dataIndex: "price" },
