@@ -37,7 +37,7 @@ const DefaultLayout = ({ children }) => {
       {loading && <Spinner />}
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo">
-          <h1 className="text-center text-light font-wight-bold mt-4">POS</h1>
+          <h1 className="text-center text-light font-wight-bold mt-4">KTM</h1>
         </div>
         <Menu
           theme="dark"
@@ -80,7 +80,7 @@ const DefaultLayout = ({ children }) => {
               onClick: toggle,
             }
           )}
-          <h3 className="app_header">🅺🆃🅼 🅲🅸🆃🆈 🅿🅾🆂 🅰🅿🅿</h3>
+          <h3 className="app_header">🅺🆃🅼 🅲🅸🆃🆈 GROCERY 🅰🅿🅿</h3>
           <div className="cart-item" onClick={() => navigate("/cart")}>
             <p>{cartItems.length}</p>
             <ShoppingCartOutlined />

@@ -92,7 +92,7 @@ const BillsPage = () => {
             <center id="top">
               <div className="logo" />
               <div className="info">
-                <h2>KTM CITY POS</h2>
+                <h2>KTM CITY </h2>
                 <p> Contact : 123456789 | Kathmandu,Nepal</p>
               </div>
             </center>

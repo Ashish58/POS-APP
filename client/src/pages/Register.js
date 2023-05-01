@@ -34,7 +34,7 @@ const Register = () => {
     <>
       <div className="register">
         <div className="register-form">
-          <h1>POS APP</h1>
+          <h1>GROCERY APP</h1>
           <h3>Register Page</h3>
           <Form layout="vertical" onFinish={handleSubmit}>
             <Form.Item name="name" label="Name">
