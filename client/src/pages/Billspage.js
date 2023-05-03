@@ -6,7 +6,7 @@ import { EyeOutlined } from "@ant-design/icons";
 import ReactToPrint from "react-to-print";
 import { useReactToPrint } from "react-to-print";
 import axios from "axios";
-import { Modal, Button, Table,Input} from "antd";
+import { Modal, Button, Table, Input } from "antd";
 import UPI from "../../src/Upi_qr.jpg";
 import "../styles/InvoiceStyles.css";
 
@@ -74,8 +74,8 @@ const BillsPage = () => {
   ];
   console.log(selectedBill);
 
-  const onSearch = (query) => {
-    setSearchQuery(query);
+  const handleSearch = (value) => {
+    setSearchQuery(value);
   };
 
   const filteredData = billsData.filter((bill) => {
@@ -86,11 +86,12 @@ const BillsPage = () => {
       <div className="d-flex justify-content-between invoice">
         <h1>Invoice list</h1>
         <Search
-      placeholder="input search text"
-      allowClear
-      onSearch={onSearch}
-      style={{ width: 304 }}
-    />
+          placeholder="input search text"
+          onChange={(e) => handleSearch(e.target.value)}
+          enterButton="Search"
+          allowClear
+          style={{ width: 304 }}
+        />
       </div>
 
       <Table columns={columns} dataSource={filteredData} bordered />
@@ -210,11 +211,10 @@ const BillsPage = () => {
               </div>
             </div>
             {
-            
-            <div className="upi_qr">
-            <img src={UPI} alt="upi_Qr"/>
-            <marquee>Scan for UPI Payment</marquee>
-          </div>
+              <div className="upi_qr">
+                <img src={UPI} alt="upi_Qr" />
+                <marquee>Scan for UPI Payment</marquee>
+              </div>
             }
           </div>
 
@@ -223,8 +223,6 @@ const BillsPage = () => {
               Print
             </Button>
           </div>
-
-         
         </Modal>
       )}
     </DefaultLayout>
