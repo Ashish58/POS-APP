@@ -18,7 +18,7 @@ const BillsPage = () => {
   const [billsData, setBillsData] = useState([]);
   const [popupModal, setPopupModal] = useState(false);
   const [selectedBill, setSelectedBill] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchData, setSearchData] = useState("");
 
   const getAllBills = async () => {
     try {
@@ -75,11 +75,11 @@ const BillsPage = () => {
   console.log(selectedBill);
 
   const handleSearch = (value) => {
-    setSearchQuery(value);
+    setSearchData(value);
   };
 
   const filteredData = billsData.filter((bill) => {
-    return bill.customerName.toLowerCase().includes(searchQuery.toLowerCase());
+    return bill.customerName.toLowerCase().includes(searchData.toLowerCase());
   });
   return (
     <DefaultLayout>
