@@ -18,6 +18,7 @@ const BillsPage = () => {
   const [popupModal, setPopupModal] = useState(false);
   const [selectedBill, setSelectedBill] = useState(null);
   const [searchText, setSearchText] = useState("");
+  const [filteredSearchData, setFilteredSearchData] = useState([]);
 
   const getAllBills = async () => {
     try {
@@ -26,6 +27,7 @@ const BillsPage = () => {
       });
       const { data } = await axios.get("/api/bills/get-bills");
       setBillsData(data);
+      setFilteredSearchData(data);
       dispatch({ type: "HIDE_LOADING" });
       console.log(data);
     } catch (error) {
@@ -76,7 +78,7 @@ const BillsPage = () => {
     const filteredData = billsData.filter((bill) => {
       return bill.customerName.toLowerCase().includes(value.toLowerCase());
     });
-    setBillsData(filteredData);
+    setFilteredSearchData(filteredData);
   };
 
   const handleClearSearch = () => {
@@ -97,7 +99,7 @@ const BillsPage = () => {
         <Button onClick={handleClearSearch}>Clear Search</Button>
       </div>
 
-      <Table columns={columns} dataSource={billsData} bordered />
+      <Table columns={columns} dataSource={filteredSearchData} bordered />
 
       {popupModal && (
         <Modal
@@ -110,7 +112,7 @@ const BillsPage = () => {
           }}
           footer={false}
         >
-          {/* **************Header Info***************** */}
+          {/* ****Header Info***** */}
           <div id="invoice-POS" ref={componentRef}>
             <center id="top">
               <div className="logo" />
@@ -119,9 +121,9 @@ const BillsPage = () => {
                 <p> Contact : 123456789 | Kathmandu,Nepal</p>
               </div>
             </center>
-            {/* ************************************************* */}
+            {/* ***************** */}
 
-            {/* ************CUSTOMER INFO********************* */}
+            {/* ****CUSTOMER INFO******* */}
             <div id="mid">
               <div className="mt-2">
                 <p>
@@ -135,9 +137,9 @@ const BillsPage = () => {
                 <hr style={{ margin: "5px" }} />
               </div>
             </div>
-            {/* ***************************************************** */}
+            {/* ******************* */}
 
-            {/* *****************TABLE DATA INVOICE********************** */}
+            {/* *****TABLE DATA INVOICE****** */}
             <div id="bot">
               <div id="table">
                 <table>
@@ -202,7 +204,7 @@ const BillsPage = () => {
                   </tbody>
                 </table>
               </div>
-              {/*End Table*/}
+              {/End Table/}
               <div id="legalcopy">
                 <p className="legal">
                   <strong>Thank you for your order!</strong> 10% GST application
