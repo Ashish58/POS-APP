@@ -22,7 +22,6 @@ const DefaultLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   const username = localStorage.getItem("auth");
   const myUsername = JSON.parse(username);
-  console.log("AAAAAAAAA", username);
   const toggle = () => {
     setCollapsed(!collapsed);
   };
