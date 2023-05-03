@@ -81,10 +81,7 @@ const BillsPage = () => {
     setFilteredSearchData(filteredData);
   };
 
-  const handleClearSearch = () => {
-    setSearchText("");
-    getAllBills();
-  };
+
 
   return (
     <DefaultLayout>
@@ -96,7 +93,6 @@ const BillsPage = () => {
           onChange={(e) => handleSearch(e.target.value)}
           style={{ width: 400 }}
         />
-        <Button onClick={handleClearSearch}>Clear Search</Button>
       </div>
 
       <Table columns={columns} dataSource={filteredSearchData} bordered />
