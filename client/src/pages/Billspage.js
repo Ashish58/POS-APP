@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-distracting-elements */
 import React, { useEffect, useState, useRef } from "react";
 import DefaultLayout from "../components/DefaultLayout";
 import { useDispatch } from "react-redux";
@@ -6,15 +5,20 @@ import { EyeOutlined } from "@ant-design/icons";
 import ReactToPrint from "react-to-print";
 import { useReactToPrint } from "react-to-print";
 import axios from "axios";
-import { Modal, Button, Table } from "antd";
+import { Modal, Button, Table, Input } from "antd";
 import UPI from "../../src/Upi_qr.jpg";
 import "../styles/InvoiceStyles.css";
+
+const { Search } = Input;
+
 const BillsPage = () => {
   const componentRef = useRef();
   const dispatch = useDispatch();
   const [billsData, setBillsData] = useState([]);
   const [popupModal, setPopupModal] = useState(false);
   const [selectedBill, setSelectedBill] = useState(null);
+  const [searchText, setSearchText] = useState("");
+
   const getAllBills = async () => {
     try {
       dispatch({
@@ -29,17 +33,16 @@ const BillsPage = () => {
       console.log(error);
     }
   };
-  //useEffect
+
   useEffect(() => {
     getAllBills();
     //eslint-disable-next-line
   }, []);
-  //print function
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
 
-  //Table data
   const columns = [
     { title: "ID ", dataIndex: "_id" },
     {
@@ -67,11 +70,31 @@ const BillsPage = () => {
       ),
     },
   ];
-  console.log(selectedBill);
+
+  const handleSearch = (value) => {
+    setSearchText(value);
+    const filteredData = billsData.filter((bill) => {
+      return bill.customerName.toLowerCase().includes(value.toLowerCase());
+    });
+    setBillsData(filteredData);
+  };
+
+  const handleClearSearch = () => {
+    setSearchText("");
+    getAllBills();
+  };
+
   return (
     <DefaultLayout>
       <div className="d-flex justify-content-between invoice">
         <h1>Invoice list</h1>
+        <Search
+          placeholder="Search customer name or contact number"
+          value={searchText}
+          onChange={(e) => handleSearch(e.target.value)}
+          style={{ width: 400 }}
+        />
+        <Button onClick={handleClearSearch}>Clear Search</Button>
       </div>
 
       <Table columns={columns} dataSource={billsData} bordered />
@@ -92,7 +115,7 @@ const BillsPage = () => {
             <center id="top">
               <div className="logo" />
               <div className="info">
-                <h2>KTM CITY </h2>
+                <h2>KTM CITY POS</h2>
                 <p> Contact : 123456789 | Kathmandu,Nepal</p>
               </div>
             </center>
@@ -191,11 +214,10 @@ const BillsPage = () => {
               </div>
             </div>
             {
-            
-            <div className="upi_qr">
-            <img src={UPI} alt="upi_Qr"/>
-            <marquee>Scan for UPI Payment</marquee>
-          </div>
+              <div className="upi_qr">
+                <img src={UPI} alt="upi_Qr" />
+                <marquee>Scan for UPI Payment</marquee>
+              </div>
             }
           </div>
 
@@ -204,8 +226,6 @@ const BillsPage = () => {
               Print
             </Button>
           </div>
-
-         
         </Modal>
       )}
     </DefaultLayout>

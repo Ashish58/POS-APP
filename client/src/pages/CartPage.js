@@ -136,10 +136,10 @@ const CartPage = () => {
           <Form.Item name="customerName" label="Customer Name" required="true">
             <Input />
           </Form.Item>
-          <Form.Item name="customerNumber" label="Contact Number">
+          <Form.Item name="customerNumber" label="Contact Number" required="true">
             <Input />
           </Form.Item>
-          <Form.Item name="paymentMode" label="Payment Method">
+          <Form.Item name="paymentMode" label="Payment Method" required="true">
             <Select>
               <Select.Option value="Cash">Cash</Select.Option>
               <Select.Option value="Card">Card</Select.Option>

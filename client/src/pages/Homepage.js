@@ -34,7 +34,8 @@ const Homepage = () => {
     },
     {
       name: "chips",
-      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxIFHRl-bcVQPP57YqHDHysaCnmcIl2uvZtQ&usqp=CAU",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxIFHRl-bcVQPP57YqHDHysaCnmcIl2uvZtQ&usqp=CAU",
     },
   ];
 

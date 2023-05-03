@@ -33,6 +33,7 @@ const CustomerPage = () => {
       dataIndex: "customerName",
     },
     { title: "Contact No", dataIndex: "customerNumber" },
+    { title: "Payment Mode", dataIndex: "paymentMode" }
   ];
   return (
     <DefaultLayout>
