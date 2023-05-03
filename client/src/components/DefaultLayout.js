@@ -68,7 +68,7 @@ const DefaultLayout = ({ children }) => {
           </Menu.Item>
         </Menu>
         <div className="welcome_user">
-          <h6>Welcome, {myUsername.name}!</h6>
+          <h6>Welcome, {myUsername.name}</h6>
         </div>
       </Sider>
       <Layout className="site-layout">

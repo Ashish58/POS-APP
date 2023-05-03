@@ -103,7 +103,7 @@ const CartPage = () => {
         ),
         userId: JSON.parse(localStorage.getItem("auth"))._id,
       };
-      // console.log(newObject);
+      console.log(newObject);
       await axios.post("/api/bills/add-bills", newObject);
       message.success("Bill Generated");
       navigate("/bills");
@@ -133,7 +133,7 @@ const CartPage = () => {
         footer={false}
       >
         <Form layout="vertical" onFinish={handleSubmit}>
-          <Form.Item name="customerName" label="Customer Name">
+          <Form.Item name="customerName" label="Customer Name" required="true">
             <Input />
           </Form.Item>
           <Form.Item name="customerNumber" label="Contact Number">
