@@ -79,7 +79,7 @@ const DefaultLayout = ({ children }) => {
               onClick: toggle,
             }
           )}
-          <h3 className="app_header">🅺🆃🅼 🅲🅸🆃🆈 GROCERY 🅰🅿🅿</h3>
+          <h3 className="app_header">𝓚𝓣𝓜 𝓒𝓘𝓣𝓨 𝓖𝓡𝓞𝓒𝓔𝓡𝓨 𝓢𝓣𝓞𝓡𝓔</h3>
           <div className="cart-item" onClick={() => navigate("/cart")}>
             <p>{cartItems.length}</p>
             <ShoppingCartOutlined />
